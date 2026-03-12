@@ -1,85 +1,80 @@
 # Movie Management API
 
-A robust Spring Boot backend application for managing an inventory of movies. It provides a full set of CRUD operations (Create, Read, Update, Delete) to easily manage movie data.
+This project is a simple backend application built using Spring Boot for managing movie records. It provides basic CRUD operations (Create, Read, Update, Delete) so users can add, view, update, and remove movies from the system.
+The application follows REST API principles and uses an H2 in-memory database, so it can run easily without setting up an external database.
 
 ## Features
 
-- **Full CRUD operations** for Movie entities.
-- **RESTful API Architecture** adhering to best practices.
-- **In-Memory Database** (H2 Database) configured for lightweight development & setup without dependencies.
-- **Automatic database initialization** and schema generation.
-- **Interactive API Documentation** via OpenAPI (Swagger UI).
-- Built-in validation constraints for structured model data.
-- **Pagination support** for easy retrieval of massive datasets.
-- Fully tested using Unit and Integration Testing layers.
+1. Create, update, delete, and view movie records
+2. RESTful API endpoints for movie operations
+3. In-memory database using H2 for easy setup
+4. Validation for movie data fields
+5. Swagger UI for testing and viewing APIs
+6. Pagination support when fetching movies
+7. Unit and integration tests for verifying functionality
 
 ## Tech Stack
 
-- **Java 17**
-- **Spring Boot 3.2.4** (Framework context/auto-configuration)
-- **Spring Data JPA & Hibernate** (Data persistence)
-- **H2 Database** (In-memory SQL Database)
-- **Spring Web** (RESTful endpoints controller)
-- **Lombok** (Boilerplate code reduction)
-- **Jakarta Validation** (Input constraints)
-- **Springdoc OpenAPI / Swagger** (Documentation & UI)
-- **JUnit 5 / Mockito / AssertJ** (Testing framework)
-- **Maven** (Dependency & build management)
+1. Java 17
+2. Spring Boot 3.2.4
+3. Spring Data JPA / Hibernate
+4. H2 Database
+5. Spring Web
+6. Lombok
+7. Jakarta Validation
+8. Springdoc OpenAPI (Swagger)
+9. JUnit 5, Mockito
+10. Maven
 
 ## How to Run the Project
 
 1. Ensure **Java 17** and **Maven** are installed on your machine.
-2. Open a terminal or IDE in the root folder (`c:\Springdevtools\TaskAPI`).
+2. Open a terminal or IDE in the root folder `C:\Springdevtools\TaskAPI`.
 3. Run the following command to start the application:
 
-   ```bash
    mvn spring-boot:run
-   ```
 
    Alternatively, if you're executing an existing built `.jar`:
-   ```bash
+
    mvn clean package
    java -jar target/movie-api-0.0.1-SNAPSHOT.jar
-   ```
+   
 
-4. The application will start locally on `http://localhost:8080`.
+4. The application will start on `http://localhost:8080`.
 
-## Database Details (H2)
+## H2 Database
 
-The application utilizes an H2 In-Memory database, meaning data is stored locally in RAM while the server is active, and resets on restart.
+This project uses the H2 in-memory database, so data is stored only while the application is running. When the server restarts, the data will reset.
 
-You can view the H2 Console by visiting:
-- **URL:** [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
-- **JDBC URL:** `jdbc:h2:mem:moviedb`
-- **Username:** `sa`
-- **Password:** `password`
+To view the H2 console, visit:
+- *URL:* http://localhost:8080/h2-console
 
-## Interactive Swagger Documentation
+Database configuration:
 
-Once the application is running, Swagger UI is automatically generated directly from the codebase logic. You can use it to visually interact with all properties, tests, and paths.
+- *JDBC URL:* `jdbc:h2:mem:moviedb`
+- *Username:* `sa`
+- *Password:* `password`
 
-- **Swagger UI Link:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-- **Raw OpenAPI JSON Spec Link:** [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+## Swagger API Documentation
+
+Swagger UI is available to test all the API endpoints.
+
+- **Swagger UI Link:** http://localhost:8080/swagger-ui.html
+- **OpenAPI JSON Link:** http://localhost:8080/v3/api-docs
 
 ### Core Endpoints Preview
 
-| HTTP Method | API Path | Action | Description |
-|---|---|---|---|
-| `GET` | `/movies` | Get All Movies | Fetches movies paginated (`?page=0&size=10`). |
-| `GET` | `/movies/{id}` | Get Movie | Fetch single movie details using an ID. |
-| `POST` | `/movies` | Create Movie | Registers a new movie to the system. |
-| `PUT` | `/movies/{id}` | Update Movie | Modifies an existing movie definition. |
-| `DELETE` | `/movies/{id}` | Delete Movie | Removes a movie from the database. |
+1. `GET /movies` - Returns a list of movies. Supports pagination (`?page=0&size=10`). 
+2. `GET /movies/{id}` - Returns details of a specific movie using its ID. 
+3. `POST /movies` - Adds a new movie to the database. 
+4. `PUT /movies/{id}` - Updates the details of an existing movie. 
+5. `DELETE /movies/{id}` - Deletes a movie from the database. 
 
 
 ## How to Run Tests
 
-This project includes both `Controller`, `Service`, and full `Integration tests` verifying application logic and controller flow.
+To run the tests for the project:
 
-To run all background tests through Maven, execute:
-
-```bash
 mvn clean test
-```
 
-*Status output will be printed to your current terminal.*
+*This will execute unit tests and integration tests and show the results in the terminal.*
